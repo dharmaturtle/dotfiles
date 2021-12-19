@@ -2,3 +2,7 @@
 AppData
 OneDrive
 {{- end }}
+
+{{- if ne .chezmoi.os "linux" }}
+.bashrc
+{{- end }}
