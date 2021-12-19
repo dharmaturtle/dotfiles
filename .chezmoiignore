@@ -1,0 +1,8 @@
+{{- if ne .chezmoi.os "windows" }}
+AppData
+OneDrive
+{{- end }}
+
+{{- if ne .chezmoi.os "linux" }}
+.bashrc
+{{- end }}
