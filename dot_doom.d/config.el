@@ -52,3 +52,13 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+; https://emacs.stackexchange.com/a/52921
+(after! magit
+  (setq magit-diff-refine-hunk 'all))
+
+; https://stackoverflow.com/a/2536694
+(add-hook 'magit-mode-hook
+  (lambda()
+    (hl-line-mode 0))
+  't)

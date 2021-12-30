@@ -189,3 +189,8 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+
+(defun dharm/switch-project-action (dir)
+  "Run `magit-status` after switching to a new project." ; https://clojurians.slack.com/archives/C099W16KZ/p1640019671274800?thread_ts=1640017748.274500&cid=C099W16KZ
+  (magit-status))
+(setq +workspaces-switch-project-function #'dharm/switch-project-action)
