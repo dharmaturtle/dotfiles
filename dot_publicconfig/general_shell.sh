@@ -14,6 +14,11 @@ alias code="/mnt/c/Users/dharm/AppData/Local/Programs/Microsoft\ VS\ Code/Code.e
 
 function precmd () {
     # https://askubuntu.com/a/832061 explains \033]0;
-    # https://github.com/gokcehan/lf/wiki/Tips#show-current-directory-in-window-title
-    printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) = true ]]; then # https://gist.github.com/nathan-v/dc57a9beb79b6d5bee7e3ddc1a48b5bc
+        # Set the title to <git parent folder name>:<current branch> like "mycoollib:master"
+        echo -ne "\033]0;$(basename `git rev-parse --show-toplevel`):$(git rev-parse --abbrev-ref HEAD)\007"
+    else
+        # https://github.com/gokcehan/lf/wiki/Tips#show-current-directory-in-window-title
+        printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+    fi
 }
