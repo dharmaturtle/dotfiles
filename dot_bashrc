@@ -121,3 +121,5 @@ fi
 ##############################
 
 source $HOME/.publicconfig/general_shell.sh
+
+shopt -s autocd
