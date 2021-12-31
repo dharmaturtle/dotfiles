@@ -11,3 +11,9 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.emacs.d/bin
 
 alias code="/mnt/c/Users/dharm/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
+
+function precmd () {
+    # https://askubuntu.com/a/832061 explains \033]0;
+    # https://github.com/gokcehan/lf/wiki/Tips#show-current-directory-in-window-title
+    printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+}
