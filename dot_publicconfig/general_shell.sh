@@ -19,6 +19,8 @@ function precmd () {
         echo -ne "\033]0;$(basename `git rev-parse --show-toplevel`):$(git rev-parse --abbrev-ref HEAD)\007"
     else
         # https://github.com/gokcehan/lf/wiki/Tips#show-current-directory-in-window-title
-        printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+        LASTCMD=$(fc -ln -1) # https://unix.stackexchange.com/questions/212872#comment1125605_212873
+        CURDIR=$(pwd | sed "s|$HOME|~|")
+        printf "\033]0; $CURDIR ❯ $LASTCMD\007" > /dev/tty
     fi
 }
