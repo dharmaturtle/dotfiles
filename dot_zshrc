@@ -45,16 +45,17 @@ eval "$(starship init zsh)"
 
 # Window Title shows current directory and running command
 # https://gist.github.com/resilar/ade1e0311755e7e0a402cbecc836f486
+# others: https://www.reddit.com/r/zsh/comments/ptwt3z https://github.com/trystan2k/zsh-tab-title
 case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
-    local term_title () { print -n "\e]0;${(j: :q)@}\a" }
+    local term_title () { print -n "\e]0;${(j: :q)@}\a" } # `man zshexpn` or https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion-Flags
     precmd () {
-      local DIR="$(print -P '[%c]%#')"
-      term_title "$DIR" "zsh"
+      local DIR="$(print -P '%c')"
+      term_title "$DIR"
     }
     preexec () {
-      local DIR="$(print -P '[%c]%#')"
+      local DIR="$(print -P '%c')"
       local CMD="${(j:\n:)${(f)1}}"
-      term_title "$DIR" "$CMD"
+      term_title "$DIR 🔷" "$CMD"
     }
   ;;
 esac
