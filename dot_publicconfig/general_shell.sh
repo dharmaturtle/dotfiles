@@ -11,15 +11,3 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.emacs.d/bin
 
 alias code="/mnt/c/Users/dharm/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
-
-function preexec () {
-    # https://askubuntu.com/a/832061 explains \033]0;
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) = true ]]; then # https://gist.github.com/nathan-v/dc57a9beb79b6d5bee7e3ddc1a48b5bc
-        # Set the title to <git parent folder name>:<current branch> like "mycoollib:master"
-        echo -ne "\033]0;$(basename `git rev-parse --show-toplevel`):$(git rev-parse --abbrev-ref HEAD)\007"
-    else
-        # https://github.com/gokcehan/lf/wiki/Tips#show-current-directory-in-window-title
-        CURDIR=$(pwd | sed "s|$HOME|~|")
-        printf "\033]0;$CURDIR ❯ $1\007" > /dev/tty # https://stackoverflow.com/questions/28099966/use-preexec-to-evaluate-entered-command
-    fi
-}
