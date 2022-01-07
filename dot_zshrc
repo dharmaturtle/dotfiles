@@ -46,6 +46,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 source $HOME/.publicconfig/general_shell.sh
 
 setopt auto_cd
+unsetopt BEEP # https://blog.vghaisas.com/zsh-beep-sound/
 
 # Window Title shows current directory and running command
 # https://gist.github.com/resilar/ade1e0311755e7e0a402cbecc836f486
