@@ -1,3 +1,14 @@
+# WSL/GitKraken bullshit https://chuckdries.medium.com/installing-gitkraken-in-wsl-2-15bf6459f823#:~:text=set%20the%20display%20environment%20variable
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+if ! pgrep ssh-agent > /dev/null; then
+rm -f /tmp/ssh-auth-sock
+eval "$(ssh-agent -s -a /tmp/ssh-auth-sock)"
+fi
+export SSH_AUTH_SOCK=/tmp/ssh-auth-sock
+if ! ssh-add -l; then
+ssh-add
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
