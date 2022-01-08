@@ -34,7 +34,7 @@ HISTFILE=~/.zsh_history
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' format '%K{243} %F{white}%d%f %k %F{243}completion:%f' # https://stackoverflow.com/a/58563434 https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
 eval "$(dircolors -b)"
