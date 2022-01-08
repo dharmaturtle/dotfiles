@@ -76,8 +76,10 @@ case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
   ;;
 esac
 
-source ~/.publicconfig/powerlevel10k/powerlevel10k.zsh-theme
+# zsh-autosuggestions
 source ~/.publicconfig/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=243,underline' # https://stackoverflow.com/questions/47310537/how-to-change-zsh-autosuggestions-color
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# powerlevel10k
+source ~/.publicconfig/powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
