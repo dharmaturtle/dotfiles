@@ -1,2 +1,3 @@
 # sourced on all invocations of the shell
 
+skip_global_compinit=1 # as per zsh-autocomplete
