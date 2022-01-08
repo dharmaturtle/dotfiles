@@ -1,4 +1,5 @@
 # WSL/GitKraken bullshit https://chuckdries.medium.com/installing-gitkraken-in-wsl-2-15bf6459f823#:~:text=set%20the%20display%20environment%20variable
+# Should run before powerlevel10k instant prompt
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 if ! pgrep ssh-agent > /dev/null; then
 rm -f /tmp/ssh-auth-sock
