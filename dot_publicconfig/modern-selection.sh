@@ -39,7 +39,7 @@ for key     kcap   seq        mode   widget (
     shome2  x      $'\E[1;2~' select   beginning-of-line
 
     left    kcub1  $'\EOD'    deselect backward-char
-    right   kcuf1  $'\EOC'    deselect forward-char
+    # right   kcuf1  $'\EOC'    deselect forward-char # clashes with zsh-autosuggestions's accept - keep an eye on https://stackoverflow.com/a/68987551
 
     end     kend   $'\EOF'    deselect end-of-line
     end2    x      $'\E4~'    deselect end-of-line
