@@ -62,6 +62,9 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
  #                                                #
   ################################################
 
+autoload -U select-word-style && select-word-style bash # https://unix.stackexchange.com/a/258661 https://stackoverflow.com/a/11200998
+zle_highlight=('paste:none') # https://unix.stackexchange.com/a/584764
+
 source $HOME/.publicconfig/general_shell.sh
 
 setopt auto_cd
