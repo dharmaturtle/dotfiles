@@ -84,6 +84,21 @@ case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
   ;;
 esac
 
+# Change working dir in shell to last dir in lf on exit https://github.com/gokcehan/lf/blob/master/etc/lfcd.sh https://github.com/gokcehan/lf/issues/140 https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+
 # zsh-autosuggestions
 source ~/.publicconfig/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=243,underline' # https://stackoverflow.com/questions/47310537/how-to-change-zsh-autosuggestions-color
