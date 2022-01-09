@@ -7,6 +7,8 @@ alias k='gitkraken &'   # WSL + Git = bullshit: https://chuckdries.medium.com/in
 alias aptup='sudo apt update && sudo apt upgrade'
 alias say='/mnt/c/Program\ Files\ \(x86\)/eSpeak/command_line/espeak.exe'
 
+export FZF_DEFAULT_COMMAND="rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*}'" # https://github.com/junegunn/fzf/issues/634#issuecomment-1008200731
+
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.emacs.d/bin
 
