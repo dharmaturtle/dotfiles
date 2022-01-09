@@ -7,7 +7,23 @@ alias k='gitkraken &'   # WSL + Git = bullshit: https://chuckdries.medium.com/in
 alias aptup='sudo apt update && sudo apt upgrade'
 alias say='/mnt/c/Program\ Files\ \(x86\)/eSpeak/command_line/espeak.exe'
 
+# Switch BAT_THEME based on Windows Terminal settings https://stackoverflow.com/a/11287896/625919
+# Maybe someday https://github.com/sharkdp/bat/issues/1104
+windowsTerminalSettings=/mnt/c/Users/dharm/Local\ Settings/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
+if rg -q "colorScheme\": \"Campbell" "$windowsTerminalSettings"; then
+    export BAT_THEME="OneHalfDark";
+else
+    export BAT_THEME="OneHalfLight";
+fi
+
 export FZF_DEFAULT_COMMAND="rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*}'" # https://github.com/junegunn/fzf/issues/634#issuecomment-1008200731
+# https://github.com/sharkdp/bat/issues/448#issuecomment-558068337 https://github.com/sharkdp/bat/issues/357#issuecomment-555942979
+alias fz="fzf\
+  --bind='ctrl-/:toggle-preview'\
+  --bind='ctrl-u:preview-page-up'\
+  --bind='ctrl-d:preview-page-down'\
+  --preview-window 'right:60%'\
+  --preview '([[ -d {} ]] && tree -C {}) || ([[ -f {} ]] && bat --style=full --color=always {}) || echo {}'"
 
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.emacs.d/bin
