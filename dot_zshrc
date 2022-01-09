@@ -66,6 +66,7 @@ autoload -U select-word-style && select-word-style bash # https://unix.stackexch
 zle_highlight=('paste:none') # https://unix.stackexchange.com/a/584764
 
 source $HOME/.publicconfig/general_shell.sh
+source $HOME/.publicconfig/modern-selection.sh
 
 setopt auto_cd
 unsetopt BEEP # https://blog.vghaisas.com/zsh-beep-sound/
