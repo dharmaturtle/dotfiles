@@ -6,6 +6,13 @@ alias k='gitkraken &'   # WSL + Git = bullshit: https://chuckdries.medium.com/in
                         # https://github.com/microsoft/WSL/issues/4273
 alias aptup='sudo apt update && sudo apt upgrade'
 alias say='/mnt/c/Program\ Files\ \(x86\)/eSpeak/command_line/espeak.exe'
+alias ls='ls --color=auto'
+alias ll="ls -lah"
+alias la="ls -a"
+alias ..='cd ..'
+alias mv='mv -iv'
+alias rm='rm -iv'
+alias cp='cp -iv'
 
 # Switch BAT_THEME based on Windows Terminal settings https://stackoverflow.com/a/11287896/625919
 # Maybe someday https://github.com/sharkdp/bat/issues/1104
@@ -29,3 +36,9 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.emacs.d/bin
 
 alias code="/mnt/c/Users/dharm/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
+
+# Named Directories https://sorrell.github.io/2020/03/16/WSL-and-ZSH.html https://github.com/romkatv/powerlevel10k/issues/796#issuecomment-638609634
+hash -d d=/mnt/c/Users/dharm/Desktop
+hash -d c=/mnt/c
+hash -d code=/mnt/c/code
+
