@@ -14,6 +14,8 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
+;;;; Installing emacs on WSL https://github.com/hubisan/emacs-wsl
+
 (doom! :input
        ;;chinese
        ;;japanese
@@ -194,3 +196,4 @@
   "Run `magit-status` after switching to a new project." ; https://clojurians.slack.com/archives/C099W16KZ/p1640019671274800?thread_ts=1640017748.274500&cid=C099W16KZ
   (magit-status))
 (setq +workspaces-switch-project-function #'dharm/switch-project-action)
+; https://www.reddit.com/r/emacs/comments/4ykg7s/creating_and_using_bookmarks/

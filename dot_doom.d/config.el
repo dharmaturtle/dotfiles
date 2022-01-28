@@ -62,3 +62,22 @@
   (lambda()
     (hl-line-mode 0))
   't)
+
+;; https://www.reddit.com/r/emacs/comments/jqeskb/how_can_i_set_themes_depending_on_time_of_the_day/gbp4671/
+(defun y/auto-update-theme ()
+  "depending on time use different theme"
+  ;; very early => gruvbox-light, solarized-light, nord-light
+  (let* ((hour (nth 2 (decode-time (current-time))))
+         (theme (cond ((<= 7 hour 8)   'doom-one-light)
+                      ((= 9 hour)      'doom-one-light)
+                      ((<= 10 hour 16) 'doom-one-light)
+                      ((<= 17 hour 18) 'doom-one)
+                      ((<= 19 hour 22) 'doom-one)
+                      (t               'doom-one))))
+    (when (not (equal doom-theme theme))
+      (setq doom-theme theme)
+      (load-theme doom-theme t))
+    ;; run that function again next hour
+    (run-at-time (format "%02d:%02d" (+ hour 1) 0) nil 'y/auto-update-theme)))
+
+(y/auto-update-theme)
