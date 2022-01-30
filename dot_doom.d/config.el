@@ -81,3 +81,7 @@
     (run-at-time (format "%02d:%02d" (+ hour 1) 0) nil 'y/auto-update-theme)))
 
 (y/auto-update-theme)
+
+(setq display-line-numbers-type 'visual)
+(global-display-line-numbers-mode t)
+(setq magit-section-disable-line-numbers nil)
